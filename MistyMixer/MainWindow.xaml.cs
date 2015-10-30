@@ -63,13 +63,6 @@ namespace MistyMixer
                 )
             );
 
-            itemContainerStyle.Setters.Add(
-                new EventSetter(
-                    ListBoxItem.DragOverEvent,
-                    new DragEventHandler(CueList_DragOver)
-                )
-            );
-
             cueListView.ItemContainerStyle = itemContainerStyle;
         }
 
@@ -88,7 +81,7 @@ namespace MistyMixer
                     || Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
                 ListBox sendingListBox = sender as ListBox;
-                ListBoxItem sendingListBoxItem = FindVisualParent<ListBoxItem>((DependencyObject)e.OriginalSource);
+                ListBoxItem sendingListBoxItem = VisualTreeSearchHelper.FindVisualParent<ListBoxItem>((DependencyObject)e.OriginalSource);
 
                 if(sendingListBoxItem != null)
                 {
@@ -122,30 +115,6 @@ namespace MistyMixer
                     }
                 }
             }
-        }
-
-        private void CueList_DragOver(object sender, DragEventArgs e)
-        {
-            if(sender is ListBoxItem)
-            {
-                if(e.Data.GetDataPresent(typeof(SoundCue)))
-                {
-                    SoundCue hoveringOverContent = e.Data.GetData(typeof(SoundCue)) as SoundCue;
-                    ListBoxItem hoveringOver = FindVisualParent<ListBoxItem>((DependencyObject)e.OriginalSource);
-                }
-            }
-        }
-
-        private T FindVisualParent<T>(DependencyObject child)
-            where T : DependencyObject
-        {
-            var parentObject = VisualTreeHelper.GetParent(child);
-            if (parentObject == null)
-                return null;
-            T parent = parentObject as T;
-            if (parent != null)
-                return parent;
-            return FindVisualParent<T>(parentObject);
         }
     }
 }
