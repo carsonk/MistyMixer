@@ -6,7 +6,7 @@
         xmlns:shell="System.Windows.Shell"
         xmlns:local="clr-namespace:MistyMixer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="427.663" Width="736.271" Background="#FF2B2B2B" Foreground="White">
+        Title="MainWindow" Height="616.663" Width="1403.271" Background="#FF2B2B2B" Foreground="White">
 
     <DockPanel LastChildFill="True">
 
@@ -26,14 +26,14 @@
                 <Image Source="Media\rounded57.png" Height="20" Width="20" />
             </Button>
         </WrapPanel>
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="245*"/>
-                <ColumnDefinition Width="470*"/>
+                <ColumnDefinition Width="346*"/>
+                <ColumnDefinition Width="1049*"/>
             </Grid.ColumnDefinitions>
-            
-            <StackPanel Margin="1,0,0,0" Grid.Column="0">
+
+            <StackPanel Margin="1,0,0,0" Grid.Column="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
                 <Grid Height="26">
                     <Border BorderBrush="#FF464646" BorderThickness="0,0,0,1" Height="26" VerticalAlignment="Top"/>
                     <TextBox x:Name="dtextBox" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Cue 1" VerticalAlignment="Top" Width="120" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="4,3,0,0"/>
@@ -48,8 +48,17 @@
                 </Grid>
             </StackPanel>
 
-            <ListBox x:Name="cueListView" Grid.Column="1" Foreground="White" Background="#FF222325"  />
-            
+            <ListBox x:Name="cueListView" Grid.Column="1" Foreground="White" Background="#FF222325" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="Sound Cue: " />
+                            <TextBlock Text="{Binding Path=Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
             <!--
             <ListBox x:Name="cueListView" Grid.Column="1" Background="#FF222325" BorderBrush="{x:Null}" BorderThickness="0,0,0,0"
                       AllowDrop="True" Height="346.703" 

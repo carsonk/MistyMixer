@@ -1,6 +1,0 @@
-c:\users\carso\documents\visual studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\MistyMixer.Wpf.Controls.csprojResolveAssemblyReference.cache
-c:\users\carso\documents\visual studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\MistyMixer.Wpf.Controls_MarkupCompile.cache
-C:\Users\carso\Documents\Visual Studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\carso\Documents\Visual Studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\MistyMixer.Wpf.Controls_MarkupCompile.lref
-C:\Users\carso\Documents\Visual Studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\MistyMixer.Wpf.Controls.dll
-C:\Users\carso\Documents\Visual Studio 2015\Projects\MistyMixer\MistyMixer.Wpf.Controls\obj\Debug\MistyMixer.Wpf.Controls.pdb

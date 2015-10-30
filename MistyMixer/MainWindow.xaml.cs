@@ -35,15 +35,19 @@ namespace MistyMixer
             _cueList.Add( new SoundCue { Title = "Sound Cue 1" } );
             _cueList.Add( new SoundCue { Title = "Sound Cue 2" } );
             _cueList.Add( new SoundCue { Title = "Sound Cue 3" } );
-
-            cueListView.DisplayMemberPath = "Title";
+            
             cueListView.ItemsSource = _cueList;
 
             cueListView.PreviewMouseMove += CueList_PreviewMouseMove;
 
             Style itemContainerStyle = new Style(typeof(ListBoxItem));
 
-            itemContainerStyle.Setters.Add(new Setter(ListBoxItem.AllowDropProperty, true));
+            itemContainerStyle.Setters.Add(
+                new Setter(
+                    ListBoxItem.AllowDropProperty, 
+                    true
+                )
+            );
 
             itemContainerStyle.Setters.Add(
                 new EventSetter(
@@ -56,6 +60,13 @@ namespace MistyMixer
                 new EventSetter(
                     ListBoxItem.DropEvent, 
                     new DragEventHandler(CueList_Drop)
+                )
+            );
+
+            itemContainerStyle.Setters.Add(
+                new EventSetter(
+                    ListBoxItem.DragOverEvent,
+                    new DragEventHandler(CueList_DragOver)
                 )
             );
 
@@ -109,6 +120,18 @@ namespace MistyMixer
                         _cueList.Insert(targetIndex, source);
                         _cueList.RemoveAt(removeIndex);
                     }
+                }
+            }
+        }
+
+        private void CueList_DragOver(object sender, DragEventArgs e)
+        {
+            if(sender is ListBoxItem)
+            {
+                if(e.Data.GetDataPresent(typeof(SoundCue)))
+                {
+                    SoundCue hoveringOverContent = e.Data.GetData(typeof(SoundCue)) as SoundCue;
+                    ListBoxItem hoveringOver = FindVisualParent<ListBoxItem>((DependencyObject)e.OriginalSource);
                 }
             }
         }
