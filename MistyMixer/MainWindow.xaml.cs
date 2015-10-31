@@ -45,40 +45,12 @@ namespace MistyMixer
 
             Style itemContainerStyle = new Style(typeof(ListBoxItem));
 
-            itemContainerStyle.Setters.Add(
-                new Setter(
-                    ListBoxItem.AllowDropProperty, 
-                    true
-                )
-            );
+            itemContainerStyle.Setters.Add(new Setter(ListBoxItem.AllowDropProperty, true));
 
-            itemContainerStyle.Setters.Add(
-                new EventSetter(
-                    ListBoxItem.PreviewMouseLeftButtonDownEvent, 
-                    new MouseButtonEventHandler(CueList_PreviewMouseLeftButtonDown)
-                )
-            );
-
-            itemContainerStyle.Setters.Add(
-                new EventSetter(
-                    ListBoxItem.DropEvent, 
-                    new DragEventHandler(CueList_Drop)
-                )
-            );
-
-            itemContainerStyle.Setters.Add(
-                new EventSetter(
-                    ListBoxItem.DragEnterEvent,
-                    new DragEventHandler(CueList_DragEnter)
-                )
-            );
-
-            itemContainerStyle.Setters.Add(
-                new EventSetter(
-                    ListBoxItem.DragLeaveEvent,
-                    new DragEventHandler(CueList_DragLeave)
-                )
-            );
+            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(CueList_PreviewMouseLeftButtonDown)));
+            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DropEvent, new DragEventHandler(CueList_Drop)));
+            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DragEnterEvent, new DragEventHandler(CueList_DragEnter)));
+            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DragLeaveEvent, new DragEventHandler(CueList_DragLeave)) );
 
             cueListView.ItemContainerStyle = itemContainerStyle;
         }
