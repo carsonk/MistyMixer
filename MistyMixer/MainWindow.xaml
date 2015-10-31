@@ -51,27 +51,13 @@
             <ListBox x:Name="cueListView" Grid.Column="1" Foreground="White" Background="#FF222325" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Sound Cue: " />
                             <TextBlock Text="{Binding Path=Title}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
-            <!--
-            <ListBox x:Name="cueListView" Grid.Column="1" Background="#FF222325" BorderBrush="{x:Null}" BorderThickness="0,0,0,0"
-                      AllowDrop="True" Height="346.703" 
-                      VerticalAlignment="Bottom" Foreground="White">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=Title}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            -->
         </Grid>
     </DockPanel>
 </Window>

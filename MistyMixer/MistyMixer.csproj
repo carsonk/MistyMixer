@@ -82,6 +82,7 @@
     <Compile Include="Utilities\AudioPlaybackEngine.cs" />
     <Compile Include="Utilities\AutoDisposeFileReader.cs" />
     <Compile Include="Utilities\CachedSoundSampleProvider.cs" />
+    <Compile Include="Utilities\VisualTreeSearchHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

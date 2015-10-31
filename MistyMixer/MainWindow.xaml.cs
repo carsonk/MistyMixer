@@ -16,6 +16,7 @@ using System.Windows.Shell;
 
 using MistyMixer.Models;
 using System.Collections.ObjectModel;
+using MistyMixer.Utilities;
 
 namespace MistyMixer
 {
@@ -26,7 +27,9 @@ namespace MistyMixer
     {
         private ObservableCollection<Cue> _cueList = new ObservableCollection<Cue>();
 
+        // Drag and Drop Stuff
         private Point _dragStartPoint;
+        private static Brush dragHoverBorderBrush = new SolidColorBrush(new Color { R = 255, G = 255, B = 255, A = 255 });
 
         public MainWindow()
         {
@@ -63,6 +66,20 @@ namespace MistyMixer
                 )
             );
 
+            itemContainerStyle.Setters.Add(
+                new EventSetter(
+                    ListBoxItem.DragEnterEvent,
+                    new DragEventHandler(CueList_DragEnter)
+                )
+            );
+
+            itemContainerStyle.Setters.Add(
+                new EventSetter(
+                    ListBoxItem.DragLeaveEvent,
+                    new DragEventHandler(CueList_DragLeave)
+                )
+            );
+
             cueListView.ItemContainerStyle = itemContainerStyle;
         }
 
@@ -94,11 +111,14 @@ namespace MistyMixer
         {
             if(sender is ListBoxItem)
             {
+                ListBoxItem targetListBox = sender as ListBoxItem;
                 SoundCue source = e.Data.GetData(typeof(SoundCue)) as SoundCue;
-                SoundCue target = ((ListBoxItem)sender).DataContext as SoundCue;
+                SoundCue target = targetListBox.DataContext as SoundCue;
 
                 int sourceIndex = cueListView.Items.IndexOf(source);
                 int targetIndex = cueListView.Items.IndexOf(target);
+
+                targetListBox.BorderThickness = new Thickness(0, 0, 0, 0);
 
                 if(sourceIndex < targetIndex)
                 {
@@ -114,6 +134,35 @@ namespace MistyMixer
                         _cueList.RemoveAt(removeIndex);
                     }
                 }
+            }
+        }
+
+        private void CueList_DragEnter(object sender, DragEventArgs e)
+        {
+            ListBoxItem targetListBox = sender as ListBoxItem;
+            SoundCue sourceCue = e.Data.GetData(typeof(SoundCue)) as SoundCue;
+            SoundCue targetCue = targetListBox.DataContext as SoundCue;
+
+
+            if (sourceCue != targetCue)
+            {
+                int sourceIndex = cueListView.Items.IndexOf(sourceCue);
+                int targetIndex = cueListView.Items.IndexOf(targetCue);
+
+                targetListBox.BorderThickness = (sourceIndex < targetIndex) ? new Thickness(0, 0, 0, 1) : new Thickness(0, 1, 0, 0);
+                targetListBox.BorderBrush = dragHoverBorderBrush;
+            }
+        }
+
+        private void CueList_DragLeave(object sender, DragEventArgs e)
+        {
+            ListBoxItem targetListBox = sender as ListBoxItem;
+            SoundCue sourceCue = e.Data.GetData(typeof(SoundCue)) as SoundCue;
+            SoundCue targetCue = targetListBox.DataContext as SoundCue;
+
+            if (sourceCue != targetCue)
+            {
+                targetListBox.BorderThickness = new Thickness(0, 0, 0, 0);
             }
         }
     }
