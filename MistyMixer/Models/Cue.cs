@@ -9,12 +9,28 @@ namespace MistyMixer.Models
 {
     public abstract class Cue
     {
-        string _title;
+        public enum Status
+        {
+            Inactive,
+            Staged,
+            Playing,
+            Paused,
+            Stopped
+        }
+
+        protected string _title;
 
         public string Title
         {
             get { return _title; }
             set { _title = value; }
+        }
+
+        protected Status _currentStatus;
+
+        public Status CurrentStatus
+        {
+            get { return _currentStatus; }
         }
 
         abstract public void Stage();
