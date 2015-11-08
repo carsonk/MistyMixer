@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,6 +79,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AudioController.cs" />
+    <Compile Include="Controllers\CueController.cs" />
     <Compile Include="Models\CachedSound.cs" />
     <Compile Include="Utilities\AudioPlaybackEngine.cs" />
     <Compile Include="Utilities\AutoDisposeFileReader.cs" />
@@ -145,26 +148,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="Media\Samples\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\arrow487.png" />
-    <Resource Include="Media\audio49.png" />
-    <Resource Include="Media\checked21.png" />
-    <Resource Include="Media\clapperboard11.png" />
-    <Resource Include="Media\gear39.png" />
-    <Resource Include="Media\headphone4.png" />
-    <Resource Include="Media\house34.png" />
-    <Resource Include="Media\magnifying-glass32.png" />
-    <Resource Include="Media\menu48.png" />
-    <Resource Include="Media\mixer2.png" />
-    <Resource Include="Media\multimediaoption161.png" />
-    <Resource Include="Media\play43.png" />
-    <Resource Include="Media\pulse2.png" />
-    <Resource Include="Media\rounded57.png" />
-    <Resource Include="Media\smartphone86.png" />
-    <Resource Include="Media\sound16.png" />
-    <Resource Include="Media\three115.png" />
-    <Resource Include="Media\website8.png" />
+    <Resource Include="Media\Images\arrow.png" />
+    <Resource Include="Media\Images\audio.png" />
+    <Resource Include="Media\Images\checked.png" />
+    <Resource Include="Media\Images\clapperboard.png" />
+    <Resource Include="Media\Images\gear.png" />
+    <Resource Include="Media\Images\headphone.png" />
+    <Resource Include="Media\Images\house.png" />
+    <Resource Include="Media\Images\magnifying-glass.png" />
+    <Resource Include="Media\Images\menu.png" />
+    <Resource Include="Media\Images\mixer.png" />
+    <Resource Include="Media\Images\multimediaoption.png" />
+    <Resource Include="Media\Images\play.png" />
+    <Resource Include="Media\Images\pulse.png" />
+    <Resource Include="Media\Images\rounded.png" />
+    <Resource Include="Media\Images\smartphone.png" />
+    <Resource Include="Media\Images\sound.png" />
+    <Resource Include="Media\Images\three.png" />
+    <Resource Include="Media\Images\website.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
