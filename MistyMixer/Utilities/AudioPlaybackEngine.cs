@@ -25,7 +25,7 @@ namespace MistyMixer.Utilities
 
         public void PlaySound(string fileName)
         {
-            var input = new AudioFileReader(fileName);
+            AudioFileReader input = new AudioFileReader(fileName);
             AddMixerInput(new AutoDisposeFileReader(input));
         }
 

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 
+using MistyMixer.Controllers;
 using MistyMixer.Models;
 using System.Collections.ObjectModel;
 using MistyMixer.Utilities;
@@ -25,7 +26,7 @@ namespace MistyMixer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Cue> _cueList = new ObservableCollection<Cue>();
+        private CueController cueController = new CueController();
 
         // Drag and Drop Stuff
         private Point _dragStartPoint;
@@ -34,12 +35,19 @@ namespace MistyMixer
         public MainWindow()
         {
             InitializeComponent();
+            this.SetupCueList();
+        }
 
-            _cueList.Add( new SoundCue { Title = "Sound Cue 1" } );
-            _cueList.Add( new SoundCue { Title = "Sound Cue 2" } );
-            _cueList.Add( new SoundCue { Title = "Sound Cue 3" } );
-            
-            cueListView.ItemsSource = _cueList;
+        private void btnAddSoundCue_Click (object sender, RoutedEventArgs e)
+        {
+            cueController.AddSoundCue();
+        }
+
+        /* CueList -- mostly drag and drop */
+
+        private void SetupCueList()
+        {
+            cueListView.ItemsSource = cueController.CueList;
 
             cueListView.PreviewMouseMove += CueList_PreviewMouseMove;
 
@@ -50,7 +58,7 @@ namespace MistyMixer
             itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(CueList_PreviewMouseLeftButtonDown)));
             itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DropEvent, new DragEventHandler(CueList_Drop)));
             itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DragEnterEvent, new DragEventHandler(CueList_DragEnter)));
-            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DragLeaveEvent, new DragEventHandler(CueList_DragLeave)) );
+            itemContainerStyle.Setters.Add(new EventSetter(ListBoxItem.DragLeaveEvent, new DragEventHandler(CueList_DragLeave)));
 
             cueListView.ItemContainerStyle = itemContainerStyle;
         }
@@ -94,16 +102,16 @@ namespace MistyMixer
 
                 if(sourceIndex < targetIndex)
                 {
-                    _cueList.Insert(targetIndex + 1, source);
-                    _cueList.RemoveAt(sourceIndex);
+                    cueController.CueList.Insert(targetIndex + 1, source);
+                    cueController.CueList.RemoveAt(sourceIndex);
                 }
                 else
                 {
                     int removeIndex = sourceIndex + 1;
-                    if(_cueList.Count + 1 > removeIndex)
+                    if(cueController.CueList.Count + 1 > removeIndex)
                     {
-                        _cueList.Insert(targetIndex, source);
-                        _cueList.RemoveAt(removeIndex);
+                        cueController.CueList.Insert(targetIndex, source);
+                        cueController.CueList.RemoveAt(removeIndex);
                     }
                 }
             }

@@ -19,11 +19,15 @@
         </Menu>
 
         <WrapPanel DockPanel.Dock="Top" Background="#FF2D2D30" Margin="0">
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
+            <Button x:Name="btnPlay" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
                 <Image Source="Media\Images\play.png" Height="20" Width="20" />
             </Button>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
+            <Button x:Name="btnPause" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
                 <Image Source="Media\Images\rounded.png" Height="20" Width="20" />
+            </Button>
+
+            <Button x:Name="btnAddSoundCue" Background="{x:Null}" BorderBrush="{x:Null}" Margin="8,3,0,3" Click="btnAddSoundCue_Click">
+                <Image Source="Media\Images\headphone.png" Height="20" Width="20" />
             </Button>
         </WrapPanel>
 
