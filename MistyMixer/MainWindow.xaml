@@ -20,10 +20,10 @@
 
         <WrapPanel DockPanel.Dock="Top" Background="#FF2D2D30" Margin="0">
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
-                <Image Source="Media\play43.png" Height="20" Width="20" />
+                <Image Source="Media\Images\play.png" Height="20" Width="20" />
             </Button>
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
-                <Image Source="Media\rounded57.png" Height="20" Width="20" />
+                <Image Source="Media\Images\rounded.png" Height="20" Width="20" />
             </Button>
         </WrapPanel>
 
