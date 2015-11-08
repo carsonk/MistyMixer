@@ -3,43 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MistyMixer.Utilities;
+using NAudio.Wave;
 
 namespace MistyMixer.Models
 {
     class SoundCue : Cue
     {
-        private string _filepath;
+        private string _fileName;
 
-        public string Filepath
+        private IWavePlayer wavePlayer;
+        private AudioFileReader file;
+
+        public string FileName
         {
             get
             {
-                return _filepath;
+                return _fileName;
             }
             set
             {
-                _filepath = value;
+                _fileName = value;
             }
+        }
+
+        public SoundCue()
+        {
         }
 
         public override void Stage()
         {
-            throw new NotImplementedException();
+            this.wavePlayer = new WaveOutEvent();
+            this.file = new AudioFileReader(_fileName);
+            this.file.Volume = 1;
+
+            this.wavePlayer.Init(this.file);
+
+            this._currentStatus = Status.Staged;
         }
 
         public override void Go()
         {
-            throw new NotImplementedException();
+            this.wavePlayer.Play();
+
+            this._currentStatus = Status.Playing;
         }
 
         public override void Stop()
         {
-            throw new NotImplementedException();
+            this.wavePlayer.Stop();
+
+            this._currentStatus = Status.Stopped;
         }
 
         public override void Pause()
         {
-            throw new NotImplementedException();
+            this.wavePlayer.Pause();
+
+            this._currentStatus = Status.Paused;
         }
     }
 }
