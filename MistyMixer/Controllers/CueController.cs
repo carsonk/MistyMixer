@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace MistyMixer.Controllers
             {
                 SoundCue cue = new SoundCue();
                 cue.FileName = ofd.FileName;
-                cue.Title = "Test Cue";
+                cue.Title = Path.GetFileName(ofd.FileName);
 
                 _cueList.Add(cue);
             }
