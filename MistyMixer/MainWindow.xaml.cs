@@ -43,6 +43,11 @@ namespace MistyMixer
             cueController.AddSoundCue();
         }
 
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = cueListView.SelectedItem;
+        }
+
         /* CueList -- mostly drag and drop */
 
         private void SetupCueList()
