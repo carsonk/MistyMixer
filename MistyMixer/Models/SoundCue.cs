@@ -44,6 +44,11 @@ namespace MistyMixer.Models
 
         public override void Go()
         {
+            if(this.wavePlayer == null)
+            {
+                throw new InvalidOperationException("Tried to play cue without staging.");
+            }
+
             this.wavePlayer.Play();
 
             this._currentStatus = Status.Playing;

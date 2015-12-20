@@ -45,7 +45,9 @@ namespace MistyMixer
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = cueListView.SelectedItem;
+            Cue selectedItem = cueListView.SelectedItem as Cue;
+            selectedItem.Stage();
+            selectedItem.Go();
         }
 
         /* CueList -- mostly drag and drop */
