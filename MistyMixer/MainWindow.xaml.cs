@@ -97,8 +97,8 @@ namespace MistyMixer
             if(sender is ListBoxItem)
             {
                 ListBoxItem targetListBox = sender as ListBoxItem;
-                SoundCue source = e.Data.GetData(typeof(SoundCue)) as SoundCue;
-                SoundCue target = targetListBox.DataContext as SoundCue;
+                Cue source = e.Data.GetData(e.Data.GetFormats()[0]) as Cue;
+                Cue target = targetListBox.DataContext as Cue;
 
                 int sourceIndex = cueListView.Items.IndexOf(source);
                 int targetIndex = cueListView.Items.IndexOf(target);
@@ -125,9 +125,8 @@ namespace MistyMixer
         private void CueList_DragEnter(object sender, DragEventArgs e)
         {
             ListBoxItem targetListBox = sender as ListBoxItem;
-            SoundCue sourceCue = e.Data.GetData(typeof(SoundCue)) as SoundCue;
-            SoundCue targetCue = targetListBox.DataContext as SoundCue;
-
+            Cue sourceCue = e.Data.GetData(e.Data.GetFormats()[0]) as Cue;
+            Cue targetCue = targetListBox.DataContext as Cue;
 
             if (sourceCue != targetCue)
             {
@@ -142,8 +141,8 @@ namespace MistyMixer
         private void CueList_DragLeave(object sender, DragEventArgs e)
         {
             ListBoxItem targetListBox = sender as ListBoxItem;
-            SoundCue sourceCue = e.Data.GetData(typeof(SoundCue)) as SoundCue;
-            SoundCue targetCue = targetListBox.DataContext as SoundCue;
+            Cue sourceCue = e.Data.GetData(e.Data.GetFormats()[0]) as Cue;
+            Cue targetCue = targetListBox.DataContext as Cue;
 
             if (sourceCue != targetCue)
             {
