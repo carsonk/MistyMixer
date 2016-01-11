@@ -46,7 +46,10 @@ namespace MistyMixer
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             Cue selectedItem = cueListView.SelectedItem as Cue;
-            selectedItem.Stage();
+
+            if(selectedItem.CurrentStatus == Cue.Status.Inactive)
+                selectedItem.Stage();
+
             selectedItem.Go();
         }
 

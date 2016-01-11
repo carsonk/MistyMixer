@@ -14,8 +14,7 @@ namespace MistyMixer.Models
             Inactive,
             Staged,
             Playing,
-            Paused,
-            Stopped
+            Paused
         }
 
         protected string _title;
@@ -31,6 +30,7 @@ namespace MistyMixer.Models
         public Status CurrentStatus
         {
             get { return _currentStatus; }
+            protected set { _currentStatus = value; }
         }
 
         abstract public void Stage();

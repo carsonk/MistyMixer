@@ -31,13 +31,20 @@ namespace MistyMixer.Models
         {
         }
 
+        ~SoundCue()
+        {
+            Stop();
+        }
+
         public override void Stage()
         {
             this.wavePlayer = new WaveOutEvent();
+
             this.file = new AudioFileReader(_fileName);
             this.file.Volume = 1;
 
             this.wavePlayer.Init(this.file);
+            this.wavePlayer.PlaybackStopped += new EventHandler<StoppedEventArgs>(PlaybackEnded);
 
             this._currentStatus = Status.Staged;
         }
@@ -56,16 +63,32 @@ namespace MistyMixer.Models
 
         public override void Stop()
         {
+            if (this.wavePlayer == null)
+                throw new InvalidOperationException("Tried to stop cue without staging.");
+
             this.wavePlayer.Stop();
 
-            this._currentStatus = Status.Stopped;
+            this.wavePlayer.PlaybackStopped -= new EventHandler<StoppedEventArgs>(PlaybackEnded);
+
+            this.wavePlayer.Dispose();
+            this.wavePlayer = null;
+
+            this.CurrentStatus = Status.Inactive;
         }
 
         public override void Pause()
         {
+            if (this.CurrentStatus != Status.Playing)
+                throw new InvalidOperationException("Tried to pause cue without staging.");
+
             this.wavePlayer.Pause();
 
             this._currentStatus = Status.Paused;
+        }
+
+        private void PlaybackEnded(object sender, StoppedEventArgs args)
+        {
+            Stop();
         }
     }
 }
