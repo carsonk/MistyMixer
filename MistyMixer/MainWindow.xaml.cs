@@ -50,6 +50,12 @@ namespace MistyMixer
             selectedItem.Go();
         }
 
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            Cue selectedItem = cueListView.SelectedItem as Cue;
+            selectedItem.Pause();
+        }
+
         /* CueList -- mostly drag and drop */
 
         private void SetupCueList()

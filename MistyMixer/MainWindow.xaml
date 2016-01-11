@@ -22,7 +22,7 @@
             <Button x:Name="btnPlay" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3" Click="btnPlay_Click">
                 <Image Source="Media\Images\play.png" Height="20" Width="20" />
             </Button>
-            <Button x:Name="btnPause" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3">
+            <Button x:Name="btnPause" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3" Click="btnPause_Click">
                 <Image Source="Media\Images\rounded.png" Height="20" Width="20" />
             </Button>
 
