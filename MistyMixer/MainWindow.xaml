@@ -40,7 +40,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Sound Cue: " />
+                            <Image Source="Media\Images\audio.png" Height="20" Width="20" Margin="0,0,5,0" />
                             <TextBlock Text="{Binding Path=Title}" />
                         </StackPanel>
                     </DataTemplate>
