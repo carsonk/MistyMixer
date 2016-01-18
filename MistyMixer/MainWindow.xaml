@@ -6,7 +6,7 @@
         xmlns:shell="System.Windows.Shell"
         xmlns:local="clr-namespace:MistyMixer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="616.663" Width="1403.271" Background="#FF2B2B2B" Foreground="White">
+        Title="MainWindow" Height="616" Width="1000" Background="#FF2B2B2B" Foreground="White">
 
     <DockPanel LastChildFill="True">
 
@@ -19,6 +19,7 @@
         </Menu>
 
         <WrapPanel DockPanel.Dock="Top" Background="#FF2D2D30" Margin="0">
+
             <Button x:Name="btnPlay" Background="{x:Null}" BorderBrush="{x:Null}" Margin="3,3,0,3" Click="btnPlay_Click">
                 <Image Source="Media\Images\play.png" Height="20" Width="20" />
             </Button>
@@ -33,10 +34,11 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1049*"/>
+                <ColumnDefinition Width="575*"/>
+                <ColumnDefinition Width="417*"/>
             </Grid.ColumnDefinitions>
 
-            <ListBox x:Name="cueListView" Grid.Column="0" Foreground="White" Background="#FF222325" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+            <ListBox x:Name="cueListView" Grid.Column="0" Foreground="White" Background="#FF222325" Margin="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" BorderBrush="#FF0A0A0A" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -46,6 +48,11 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Text="Testing" Height="37.54" VerticalAlignment="Top" Padding="3,3,3,3" Margin="10,10,10,0" HorizontalAlignment="Center" Width="397" Background="#222" FontSize="18.667" Foreground="#FFBBBBBB" BorderBrush="#FF626468" FontWeight="Bold"  />
+
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>
