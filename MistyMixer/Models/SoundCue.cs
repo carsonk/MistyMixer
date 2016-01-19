@@ -38,52 +38,52 @@ namespace MistyMixer.Models
 
         public override void Stage()
         {
-            this.wavePlayer = new WaveOutEvent();
+            wavePlayer = new WaveOutEvent();
 
-            this.file = new AudioFileReader(_fileName);
-            this.file.Volume = 1;
+            file = new AudioFileReader(_fileName);
+            file.Volume = 1;
 
-            this.wavePlayer.Init(this.file);
-            this.wavePlayer.PlaybackStopped += new EventHandler<StoppedEventArgs>(PlaybackEnded);
+            wavePlayer.Init(file);
+            wavePlayer.PlaybackStopped += new EventHandler<StoppedEventArgs>(PlaybackEnded);
 
-            this._currentStatus = Status.Staged;
+            _currentStatus = Status.Staged;
         }
 
         public override void Go()
         {
-            if(this.wavePlayer == null)
+            if(wavePlayer == null)
             {
                 throw new InvalidOperationException("Tried to play cue without staging.");
             }
 
-            this.wavePlayer.Play();
+            wavePlayer.Play();
 
-            this._currentStatus = Status.Playing;
+            _currentStatus = Status.Playing;
         }
 
         public override void Stop()
         {
-            if (this.wavePlayer == null)
+            if (wavePlayer == null)
                 throw new InvalidOperationException("Tried to stop cue without staging.");
 
-            this.wavePlayer.Stop();
+            wavePlayer.Stop();
 
-            this.wavePlayer.PlaybackStopped -= new EventHandler<StoppedEventArgs>(PlaybackEnded);
+            wavePlayer.PlaybackStopped -= new EventHandler<StoppedEventArgs>(PlaybackEnded);
 
-            this.wavePlayer.Dispose();
-            this.wavePlayer = null;
+            wavePlayer.Dispose();
+            wavePlayer = null;
 
-            this.CurrentStatus = Status.Inactive;
+            CurrentStatus = Status.Inactive;
         }
 
         public override void Pause()
         {
-            if (this.CurrentStatus != Status.Playing)
+            if (CurrentStatus != Status.Playing)
                 throw new InvalidOperationException("Tried to pause cue without staging.");
 
-            this.wavePlayer.Pause();
+            wavePlayer.Pause();
 
-            this._currentStatus = Status.Paused;
+            _currentStatus = Status.Paused;
         }
 
         private void PlaybackEnded(object sender, StoppedEventArgs args)

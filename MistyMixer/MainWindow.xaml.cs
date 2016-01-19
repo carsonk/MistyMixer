@@ -35,7 +35,7 @@ namespace MistyMixer
         public MainWindow()
         {
             InitializeComponent();
-            this.SetupCueList();
+            SetupCueList();
         }
 
         private void btnAddSoundCue_Click (object sender, RoutedEventArgs e)

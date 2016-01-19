@@ -15,7 +15,7 @@ namespace MistyMixer.Utilities
         public AutoDisposeFileReader(AudioFileReader reader)
         {
             this.reader = reader;
-            this.WaveFormat = reader.WaveFormat;
+            WaveFormat = reader.WaveFormat;
         }
 
         public int Read(float[] buffer, int offset, int count)
